@@ -1,6 +1,6 @@
 {
   "name": "openclassrooms/customer-io",
-  "description": "Use case library",
+  "description": "CustomerIO Library",
   "type": "library",
   "keywords": ["design"],
   "license": "MIT",

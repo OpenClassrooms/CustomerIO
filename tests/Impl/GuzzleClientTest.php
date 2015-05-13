@@ -27,12 +27,12 @@ class GuzzleClientTest extends \PHPUnit_Framework_TestCase
     {
         $this->client = new GuzzleClient(self::SITE_ID, self::API_KEY);
 
-        $reflectionClass = new \ReflectionClass('OpenClassrooms\CustomerIO\Impl\GuzzleClient');
+        $reflectionClass = new \ReflectionClass($this->client);
         $guzzleProperty = $reflectionClass->getProperty('guzzle');
         $guzzleProperty->setAccessible(true);
         $guzzle = $guzzleProperty->getValue($this->client);
 
-        /** @var \Guzzle\Http\Client $guzzle */
+        /** @var \GuzzleHttp\Client $guzzle */
         $this->assertEquals(Client::BASE_URL, $guzzle->getBaseUrl());
         $this->assertEquals($guzzle->getDefaultOption('auth'), array(self::SITE_ID, self::API_KEY));
     }

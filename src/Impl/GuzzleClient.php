@@ -11,14 +11,18 @@ class GuzzleClient implements Client
 {
 
     /**
-     * @var \Guzzle\Http\Client
+     * @var \GuzzleHttp\ClientInterface
      */
     private $guzzle;
 
     public function __construct($siteId, $apiKey)
     {
-        $this->guzzle = new \Guzzle\Http\Client(self::BASE_URL);
-        $this->guzzle->setDefaultOption('auth', array($siteId, $apiKey));
+        $this->guzzle = new \GuzzleHttp\Client(
+            array(
+                'base_url' => self::BASE_URL,
+                'defaults' => array('auth' => array($siteId, $apiKey))
+            )
+        );
     }
 
     public function delete($uri)
