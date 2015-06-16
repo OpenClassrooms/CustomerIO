@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CustomerIO\Tests\Impl;
 
+use GuzzleHttp\RequestOptions;
 use OpenClassrooms\CustomerIO\Client;
 use OpenClassrooms\CustomerIO\Impl\GuzzleClient;
 
@@ -33,7 +34,7 @@ class GuzzleClientTest extends \PHPUnit_Framework_TestCase
         $guzzle = $guzzleProperty->getValue($this->client);
 
         /** @var \GuzzleHttp\Client $guzzle */
-        $this->assertEquals(Client::BASE_URL, $guzzle->getBaseUrl());
-        $this->assertEquals($guzzle->getDefaultOption('auth'), array(self::SITE_ID, self::API_KEY));
+        $this->assertEquals(Client::BASE_URL, $guzzle->getConfig('base_uri'));
+        $this->assertEquals($guzzle->getConfig(RequestOptions::AUTH), array(self::SITE_ID, self::API_KEY));
     }
 }

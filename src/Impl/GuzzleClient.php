@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CustomerIO\Impl;
 
+use GuzzleHttp\RequestOptions;
 use OpenClassrooms\CustomerIO\Client;
 
 /**
@@ -11,7 +12,7 @@ class GuzzleClient implements Client
 {
 
     /**
-     * @var \GuzzleHttp\ClientInterface
+     * @var \GuzzleHttp\Client
      */
     private $guzzle;
 
@@ -19,8 +20,8 @@ class GuzzleClient implements Client
     {
         $this->guzzle = new \GuzzleHttp\Client(
             array(
-                'base_url' => self::BASE_URL,
-                'defaults' => array('auth' => array($siteId, $apiKey))
+                'base_uri' => self::BASE_URL,
+                RequestOptions::AUTH => array($siteId, $apiKey)
             )
         );
     }
