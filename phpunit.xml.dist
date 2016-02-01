@@ -12,13 +12,17 @@
         syntaxCheck                 = "false">
 
     <testsuites>
-        <testsuite name="Use Case Test Suite">
+        <testsuite name="Test Suite">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist>
             <directory suffix=".php">./src</directory>
+            <exclude>
+                <directory>./tests</directory>
+                <directory>./vendor</directory>
+            </exclude>
         </whitelist>
     </filter>
 </phpunit>
